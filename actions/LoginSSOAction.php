@@ -34,11 +34,6 @@ class LoginSSOAction extends CAction {
             throw new Exception('redirectAfterLoginTo belum diset');
     }
 
-    private function getSimplesamlphpInstance() {
-        $temp = $this->simplesamlphpComponentName;
-        return Yii::app()->$temp;
-    }
-
     private function setRootPathOfAlias() {
         if (Yii::getPathOfAlias('yii-simplesamlphp') === false) {
             Yii::setPathOfAlias('yii-simplesamlphp', realpath(dirname(__FILE__) . '/..'));
@@ -47,6 +42,11 @@ class LoginSSOAction extends CAction {
 
     private function loadRequiredClass() {
         Yii::import('yii-simplesamlphp.components.SSOUserIdentity');
+    }
+
+    private function getSimplesamlphpInstance() {
+        $temp = $this->simplesamlphpComponentName;
+        return Yii::app()->$temp;
     }
 
 }

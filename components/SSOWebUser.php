@@ -21,11 +21,11 @@ class SSOWebUser extends CWebUser {
     }
 
     public function getId() {
-        return $this->getSimplesamlphpInstance()->email_address[0];
+        return $this->getSimplesamlphpInstance()->email_address;
     }
 
     public function getName() {
-        return $this->getSimplesamlphpInstance()->email_address[0];
+        return $this->getSimplesamlphpInstance()->email_address;
     }
 
     public function getIsGuest() {

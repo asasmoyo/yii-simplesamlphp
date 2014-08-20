@@ -12,8 +12,6 @@ class LevelFilter extends CFilter {
 
     protected function preFilter($filterChain) {
         $this->checkProperties();
-        
-        
     }
 
     private function checkProperties() {

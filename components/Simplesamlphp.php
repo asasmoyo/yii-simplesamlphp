@@ -49,7 +49,15 @@ class Simplesamlphp extends CApplicationComponent {
     }
 
     public function __get($name) {
-        return isset($this->getAttributes()[$name]) ? $this->getAttributes()[$name] : null;
+        $result = null;
+        if (isset($this->getAttributes()[$name])) {
+            if (count($this->getAttributes()[$name]) == 1) {
+                $result = $this->getAttributes()[$name][0];
+            } else {
+                $result = $this->getAttributes()[$name];
+            }
+        }
+        return $result;
     }
 
 }
