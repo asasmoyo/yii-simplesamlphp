@@ -1,4 +1,4 @@
-yii-simplesamlphp
+Yii Simplesamlphp
 -----------------
 
 ###1. Installation
@@ -11,9 +11,9 @@ Register `components/Simplesaml.php` as a component. It needs 2 arguments, `auto
 ),
 ```
 ###2. Usage
-    - Using [simplesamlphp sp's api](https://simplesamlphp.org/docs/stable/simplesamlphp-sp-api)  
+    ##1. Using [simplesamlphp sp's api](https://simplesamlphp.org/docs/stable/simplesamlphp-sp-api)  
 Now you can use the api simply by call `Yii::app()->componentName->method_name()`.
-    - Login and logout action  
+    ##2. Login and logout action  
 You can use our `LoginSSOAction` and `LogoutSSOAction` to login and logout your application with Simplesamlphp. All you need to do is create method `actions` on your controller and add `LoginSSOAction` and `LogoutSSOAction` to your action.
 ```php
 'login' => array(
