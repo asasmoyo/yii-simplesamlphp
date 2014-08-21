@@ -15,7 +15,6 @@ class LoginSSOAction extends CAction {
     }
 
     public function run() {
-        $this->checkProperty();
         $this->setRootPathOfAlias();
         $this->loadRequiredClass();
 
@@ -24,14 +23,6 @@ class LoginSSOAction extends CAction {
         Yii::app()->user->login($userIdentity);
 
         $this->getController()->redirect($this->redirectAfterLoginTo);
-    }
-
-    public function checkProperty() {
-        if ($this->simplesamlphpComponentName == '')
-            throw new Exception('simplesamlphpComponentName belum diset');
-
-        if ($this->redirectAfterLoginTo == '')
-            throw new Exception('redirectAfterLoginTo belum diset');
     }
 
     private function setRootPathOfAlias() {

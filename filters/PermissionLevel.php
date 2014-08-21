@@ -1,13 +1,13 @@
 <?php
 
 /**
- * Description of LevelFilter
+ * Description of PermissionLevel
  *
  * @author Arba
  */
-class LevelFilter extends CFilter {
+class PermissionLevel extends CFilter {
 
-    public $allowedLevels = null;
+    public $allowedPermissions = array();
     public $simplesamlphpComponentName = null;
 
     protected function preFilter($filterChain) {

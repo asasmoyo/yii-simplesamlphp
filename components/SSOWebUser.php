@@ -8,14 +8,7 @@ class SSOWebUser extends CWebUser {
         parent::init();
     }
 
-    private function checkProperties() {
-        if ($this->simplesamlphpComponentName == '') {
-            throw new Exception('simplesamlphpComponentName belum di set.');
-        }
-    }
-
     private function getSimplesamlphpInstance() {
-        $this->checkProperties();
         $temp = $this->simplesamlphpComponentName;
         return Yii::app()->$temp;
     }
