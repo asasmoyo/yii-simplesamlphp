@@ -19,7 +19,7 @@ class LoginSSOAction extends CAction {
         $this->loadRequiredClass();
 
         $this->getSimplesamlphpInstance()->requireAuth();
-        $userIdentity = new SSOUserIdentity($this->getSimplesamlphpInstance()->email_address[0], '');
+        $userIdentity = new SSOUserIdentity($this->getSimplesamlphpInstance()->email, '');
         Yii::app()->user->login($userIdentity);
 
         $this->getController()->redirect($this->redirectAfterLoginTo);

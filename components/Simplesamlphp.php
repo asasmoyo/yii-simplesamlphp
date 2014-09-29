@@ -6,11 +6,13 @@ class Simplesamlphp extends CApplicationComponent {
     public $authSource = '';
     private $authSimple = null;
     private $attributes = null;
+    private $data = null;
 
     public function init() {
         $this->loadSimplesamlPhp();
         $this->authSimple = new \SimpleSAML_Auth_Simple($this->authSource);
         $this->attributes = $this->authSimple->getAttributes();
+        $this->data = json_decode($this->attributes->data[0]);
 
         parent::init();
     }
@@ -41,7 +43,7 @@ class Simplesamlphp extends CApplicationComponent {
     }
 
     public function getAttributes() {
-        return $this->authSimple->getAttributes();
+        return $this->attributes;
     }
 
     public function isAuthenticated() {
@@ -50,12 +52,8 @@ class Simplesamlphp extends CApplicationComponent {
 
     public function __get($name) {
         $result = null;
-        if (isset($this->getAttributes()[$name])) {
-            if (count($this->getAttributes()[$name]) == 1) {
-                $result = $this->getAttributes()[$name][0];
-            } else {
-                $result = $this->getAttributes()[$name];
-            }
+        if (isset($this->data->$name)) {
+            $result = $this->data->$name;
         }
         return $result;
     }
