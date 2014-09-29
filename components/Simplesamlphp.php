@@ -12,7 +12,7 @@ class Simplesamlphp extends CApplicationComponent {
         $this->loadSimplesamlPhp();
         $this->authSimple = new \SimpleSAML_Auth_Simple($this->authSource);
         $this->attributes = $this->authSimple->getAttributes();
-        $this->data = json_decode($this->attributes->data[0]);
+        $this->data = json_decode($this->attributes['data'][0]);
 
         parent::init();
     }
