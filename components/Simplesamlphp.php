@@ -2,17 +2,16 @@
 
 class Simplesamlphp extends CApplicationComponent {
 
-    public $autoloadPath = '';
-    public $authSource = '';
-    private $authSimple = null;
-    private $attributes = null;
-    private $data = null;
+    public $autoloadPath;
+    public $authSource;
+    private $authSimple;
+    private $attributes;
+    private static $data;
 
     public function init() {
         $this->loadSimplesamlPhp();
         $this->authSimple = new \SimpleSAML_Auth_Simple($this->authSource);
         $this->attributes = $this->authSimple->getAttributes();
-        $this->data = json_decode($this->attributes['data'][0]);
 
         parent::init();
     }
@@ -51,11 +50,15 @@ class Simplesamlphp extends CApplicationComponent {
     }
 
     public function __get($name) {
-        $result = null;
-        if (isset($this->data->$name)) {
-            $result = $this->data->$name;
+        return $this->getData($name);
+    }
+
+    private function getData($name) {
+        if (!self::$data) {
+            self::$data = json_decode($this->attributes['data'][0]);
         }
-        return $result;
+
+        return isset(self::$data[$name]) ? self::$data[$name] : null;
     }
 
 }
