@@ -14,7 +14,7 @@ class SSOWebUser extends CWebUser {
     }
 
     public function getId() {
-        return $this->getSimplesamlphpInstance()->email;
+        return $this->getSimplesamlphpInstance()->username;
     }
 
     public function getName() {

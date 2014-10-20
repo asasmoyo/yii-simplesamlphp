@@ -58,7 +58,7 @@ class Simplesamlphp extends CApplicationComponent {
             self::$data = json_decode($this->attributes['data'][0]);
         }
 
-        return isset(self::$data[$name]) ? self::$data[$name] : null;
+        return self::$data->$name;
     }
 
 }
