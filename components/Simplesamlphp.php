@@ -54,6 +54,10 @@ class Simplesamlphp extends CApplicationComponent {
     }
 
     private function getData($name) {
+        if (!isset($this->attributes['data'])) {
+            return null;
+        }
+        
         if (!self::$data) {
             self::$data = json_decode($this->attributes['data'][0]);
         }
