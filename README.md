@@ -39,5 +39,5 @@ class SiteController extends Controller {
 
 }
 ```
-Now you can login via site/login and logout via site/logout.
+Now you can login via `site/login` and logout via `site/logout`.
 You need to specify `simplesamlphpComponentName` with your component name which you register `components/Simplesamlphp.php` and `redirectAfterLogin` and `redirectAfterLogout` with a route where you want to be redirected after login / logout.
