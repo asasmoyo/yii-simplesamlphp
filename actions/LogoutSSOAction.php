@@ -1,19 +1,38 @@
 <?php
 
 /**
- * Description of LogoutSSOAction
- *
- * @author Arba
+ * Use this action to logout a user.
  */
 class LogoutSSOAction extends CAction {
 
-    public $simplesamlphpComponentName = '';
-    public $redirectAfterLogoutTo = '';
+    /**
+     * The component name which is you register Simplesamlphp instance in your config/main.php.
+     */
+    public $simplesamlphpComponentName = 'simplesamlphp';
 
+    /**
+     * Where the user is redirected after logout.
+     */
+    public $redirectAfterLogoutTo = array('/');
+
+    /**
+     * Simplesamlphp component instance.
+     */
+    private $simplesamlphpInstance = null;
+
+    /**
+     * Init LogoutSSOAction.
+     */
     public function init() {
+        $componentName = $this->simplesamlphpComponentName;
+        $this->simplesamlphpInstance = Yii::app()->$componentName;
+
         parent::init();
     }
 
+    /**
+     * Run the logout action. Logout the user's session in Simplesamlphp Sp then redirected back to this action then logout the user's sesion in Yii application and then redirect the user to $redirectAfterLogoutTo.
+     */
     public function run() {
         $this->setRootPathOfAlias();
 
@@ -23,17 +42,6 @@ class LogoutSSOAction extends CAction {
         Yii::app()->user->logout(true);
 
         $this->getController()->redirect($this->redirectAfterLogoutTo);
-    }
-
-    private function setRootPathOfAlias() {
-        if (Yii::getPathOfAlias('yii-simplesamlphp') === false) {
-            Yii::setPathOfAlias('yii-simplesamlphp', realpath(dirname(__FILE__) . '/..'));
-        }
-    }
-
-    private function getSimplesamlphpInstance() {
-        $temp = $this->simplesamlphpComponentName;
-        return Yii::app()->$temp;
     }
 
 }

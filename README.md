@@ -2,11 +2,11 @@ Yii Simplesamlphp
 -----------------
 
 ###1. Installation
-Register `components/Simplesaml.php` as a component. It needs 2 arguments, `autoloadPath` where your simplesamlphp sp's `lib/_autoloadphp` is and `authSource` the authentication source that you will use on your `config/authsources.php`
+Register `components/Simplesaml.php` as a component. It needs 2 arguments, `autoloadPath` where your simplesamlphp sp's `lib/_autoload.php` is and `authSource` the authentication source that you will use on your `config/authsources.php`
 ```php
 'simplesamlphp' => array(
     'class' => 'ext.yii-simplesamlphp.components.Simplesamlphp',
-    'autoloadPath' => '../lib/_autoload.php',
+    'autoloadPath' => 'SIMPLESAMLPHP_SP_PATH/lib/_autoload.php',
     'authSource' => 'default-sp',
 ),
 ```
