@@ -2,9 +2,9 @@ Yii Simplesamlphp
 -----------------
 
 ###1. Installation
-Register `components/Simplesaml.php` as a component. It needs 2 arguments, `autoloadPath` where your simplesamlphp sp's `lib/_autoload.php` is and `authSource` the authentication source that you will use on your `config/authsources.php`
+Download or clone this repot then extract to `extensions`. Register `components/Simplesaml.php` as a component. It needs 2 arguments, `autoloadPath` where your simplesamlphp sp's `lib/_autoload.php` is and `authSource` the authentication source that you will use on your `config/authsources.php`
 ```php
-// on config/main.php
+	// on config/main.php
 	'components' => array(
 		'simplesamlphp' => array(
 		    'class' => 'ext.yii-simplesamlphp.components.Simplesamlphp',
@@ -39,4 +39,5 @@ class SiteController extends Controller {
 
 }
 ```
+Now you can login via site/login and logout via site/logout.
 You need to specify `simplesamlphpComponentName` with your component name which you register `components/Simplesamlphp.php` and `redirectAfterLogin` and `redirectAfterLogout` with a route where you want to be redirected after login / logout.

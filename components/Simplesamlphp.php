@@ -11,7 +11,7 @@ class Simplesamlphp extends CApplicationComponent {
     public $autoloadPath;
 
     /**
-     * Authenticated source 
+     * Authentication source you will use.
      */
     public $authSource;
 
