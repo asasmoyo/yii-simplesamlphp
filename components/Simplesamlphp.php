@@ -111,7 +111,7 @@ class Simplesamlphp extends CApplicationComponent {
      * @return string the attribute value
      */
     public function __get($name) {
-        return $this->getData($name);
+        return $this->getAttributes()[$name];
     }
 
 }
