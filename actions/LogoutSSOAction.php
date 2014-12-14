@@ -26,18 +26,16 @@ class LogoutSSOAction extends CAction {
     public function init() {
         $componentName = $this->simplesamlphpComponentName;
         $this->simplesamlphpInstance = Yii::app()->$componentName;
-
-        parent::init();
     }
 
     /**
      * Run the logout action. Logout the user's session in Simplesamlphp Sp then redirected back to this action then logout the user's sesion in Yii application and then redirect the user to $redirectAfterLogoutTo.
      */
     public function run() {
-        $this->setRootPathOfAlias();
+	$this->init();
 
-        if ($this->getSimplesamlphpInstance()->isAuthenticated()) {
-            $this->getSimplesamlphpInstance()->logout();
+        if ($this->simplesamlphpInstance->isAuthenticated()) {
+            $this->simplesamlphpInstance->logout();
         }
         Yii::app()->user->logout(true);
 
