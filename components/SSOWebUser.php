@@ -19,6 +19,8 @@ class SSOWebUser extends CWebUser {
      * Init the SSOWebUser.
      */
     public function init() {
+        assert(!is_null($this->simplesamlphpComponentName), 'You must set simplesamlphp component name.');
+
         $componentName = $this->simplesamlphpComponentName;
         $this->simplesamlphpInstance = Yii::app()->$componentName;
 

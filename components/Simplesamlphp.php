@@ -25,6 +25,9 @@ class Simplesamlphp extends CApplicationComponent {
      * It loads Simplesamlphp autoloader and initialize $authSimple with SimpleSAML_Auth_Simple instance using authSource specified in $this->authSource.
      */
     public function init() {
+        assert(!is_null($this->autoloadPath), 'You must set autoload path to Simplesamlphp_SP/lib/_autoload.php.');
+        assert(!is_null($this->authSource), 'You must set your Simplesamlphp SP auth source.');
+
         $this->loadSimplesamlPhp();
         $this->authSimple = new \SimpleSAML_Auth_Simple($this->authSource);
 

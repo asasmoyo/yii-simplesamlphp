@@ -3,7 +3,7 @@
 /**
  * Use this action to login a user.
  */
-class LoginSSOAction extends CAction {
+class LoginAction extends CAction {
 
     /**
      * The component name which is you register Simplesamlphp instance in your config/main.php.
@@ -21,9 +21,12 @@ class LoginSSOAction extends CAction {
     private $simplesamlphpInstance = null;
 
     /**
-     * Init LoginSSOAction.
+     * Init LoginAction.
      */
     public function init() {
+        assert(!is_null($this->simplesamlphpComponentName), 'You must set simplesamlphp component name.');
+        assert(!empty($this->redirectAfterLoginTo), 'You must set redirect after login to.');
+
         $componentName = $this->simplesamlphpComponentName;
         $this->simplesamlphpInstance = Yii::app()->$componentName;
     }
@@ -32,7 +35,7 @@ class LoginSSOAction extends CAction {
      * Run the login action. The user will be redirected to Simplesamlphp IdP login page, if he successfully login then he will be redirected to this page again. After that login the user to Yii application and then redirect the user to $redirectAfterLoginTo route.
      */
     public function run() {
-	$this->init();
+	    $this->init();
 
         $this->setRootPathOfAlias();
         $this->loadRequiredClass();
