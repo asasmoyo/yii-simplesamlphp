@@ -9,10 +9,10 @@ Yii Simplesamlphp
   // on config/main.php
   'components' => array(
   	  'simplesamlphp' => array(
-	      'class' => 'ext.yii-simplesamlphp.components.Simplesamlphp',
-	      'autoloadPath' => 'SIMPLESAMLPHP_SP_PATH/lib/_autoload.php',
-	      'authSource' => 'default-sp',
-	   ),
+	        'class' => 'ext.yii-simplesamlphp.components.Simplesamlphp',
+	        'autoloadPath' => 'SIMPLESAMLPHP_SP_PATH/lib/_autoload.php',
+	        'authSource' => 'default-sp',
+	    ),
 	   
        //your other components
   ),
@@ -34,17 +34,17 @@ Yii Simplesamlphp
 
       public function actions() {
           return array(
-		      'login' => array(
-		          'class' => 'ext.yii-simplesamlphp.actions.LoginSSOAction',
-		          'simplesamlphpComponentName' => 'simplesamlphp',
-		          'redirectAfterLoginTo' => array('/'),
-		      ),
-		     'logout' => array(
-		          'class' => 'ext.yii-simplesamlphp.actions.LogoutSSOAction',
-		          'simplesamlphpComponentName' => 'simplesamlphp',
-		          'redirectAfterLogoutTo' => array('/'),
-		      ),
-	      );
+		          'login' => array(
+		              'class' => 'ext.yii-simplesamlphp.actions.LoginSSOAction',
+		              'simplesamlphpComponentName' => 'simplesamlphp',
+		              'redirectAfterLoginTo' => array('/'),
+		          ),
+		          'logout' => array(
+		              'class' => 'ext.yii-simplesamlphp.actions.LogoutSSOAction',
+		              'simplesamlphpComponentName' => 'simplesamlphp',
+		              'redirectAfterLogoutTo' => array('/'),
+		          ),
+	        );
       }
 
       //your other actions
@@ -54,3 +54,7 @@ Yii Simplesamlphp
 
   Now you can login via `site/login` and logout via `site/logout`.
   You need to specify `simplesamlphpComponentName` with your component name which you register `components/Simplesamlphp.php` and `redirectAfterLogin` and `redirectAfterLogout` with a route where you want to be redirected after login / logout.
+
+###3. Example
+
+  You can install [Yii Simplesamlphp Example](https://github.com/asasmoyo/yii-simplesamlphp) to try this extension.
