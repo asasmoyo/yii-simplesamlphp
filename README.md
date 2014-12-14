@@ -57,4 +57,4 @@ Yii Simplesamlphp
 
 ###3. Example
 
-  You can install [Yii Simplesamlphp Example](https://github.com/asasmoyo/yii-simplesamlphp) to try this extension.
+  You can install [Yii Simplesamlphp Example](https://github.com/asasmoyo/yii-simplesamlphp-example) to try this extension.
