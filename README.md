@@ -35,12 +35,12 @@ Yii Simplesamlphp
       public function actions() {
           return array(
 		          'login' => array(
-		              'class' => 'ext.yii-simplesamlphp.actions.LoginSSOAction',
+		              'class' => 'ext.yii-simplesamlphp.actions.LoginAction',
 		              'simplesamlphpComponentName' => 'simplesamlphp',
 		              'redirectAfterLoginTo' => array('/'),
 		          ),
 		          'logout' => array(
-		              'class' => 'ext.yii-simplesamlphp.actions.LogoutSSOAction',
+		              'class' => 'ext.yii-simplesamlphp.actions.LogoutAction',
 		              'simplesamlphpComponentName' => 'simplesamlphp',
 		              'redirectAfterLogoutTo' => array('/'),
 		          ),
