@@ -38,8 +38,24 @@ class Simplesamlphp extends CApplicationComponent {
      * Register Simplesamlphp autoloader
      */
     public function loadSimplesamlPhp() {
+        // include the autoloader provided by SimpleSAMLphp
+        $before = get_declared_classes();
         require_once($this->autoloadPath);
-        YiiBase::registerAutoloader('SimpleSAML_autoload', true);
+        $after = get_declared_classes();
+
+        if (function_exists('SimpleSAML_autoload')) {
+            // this is an old version of SimpleSAML, use the non-Composer version of the autoloader
+            YiiBase::registerAutoloader('SimpleSAML_autoload', true);
+        } else {
+            // figure out which classname Composer assigned to it, and use that instead
+            $diff = array_diff($after, $before);
+            foreach ($diff as $candidate) {
+                if (strpos($candidate, "ComposerAutoloaderInit")===0) {
+                    // register the loaded Composer autoloader an autoloader with Yii
+                    YiiBase::registerAutoloader(array($candidate, 'loadClassLoader'), true);
+                }
+            }
+        }
     }
 
     /**
