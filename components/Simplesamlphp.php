@@ -87,7 +87,7 @@ class Simplesamlphp extends CApplicationComponent {
      * @see https://simplesamlphp.org/docs/stable/simplesamlphp-sp-api#section_8
      */
     public function getLoginURL($returnTo = null) {
-        $this->authSimple->getLogoutUrl($returnTo);
+        $this->authSimple->getLoginURL($returnTo);
     }
 
     /**
